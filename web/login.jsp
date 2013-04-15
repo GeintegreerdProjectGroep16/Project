@@ -24,7 +24,7 @@
             	<label for="Password">Wachtwoord</label>
                 <input type="Password" id="Password" required="required" class="box_shadow" min="10" />
             </div>
-            <input type="submit" value="submit form &rarr;" />
+            <input type="submit" value="Login" />
         </fieldset>
     </form>
 

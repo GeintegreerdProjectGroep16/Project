@@ -12,6 +12,9 @@
         <title>Home</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Muziekfestivals</h1>
+        <form action="login.jsp">
+            <input type="submit" value="Login">
+        </form>
     </body>
 </html>
