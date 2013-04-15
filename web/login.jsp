@@ -13,5 +13,20 @@
     </head>
     <body>
         <h1>Inloggen Gebruikers</h1>
+        
+        <form class="col col_6">
+    	<fieldset>	
+            <div>
+            	<label for="Username">Gebruikersnaam</label>
+                <input type="Name" id="email" required="required" class="box_shadow"  />
+            </div>
+            <div>
+            	<label for="Password">Wachtwoord</label>
+                <input type="Password" id="Password" required="required" class="box_shadow" min="10" />
+            </div>
+            <input type="submit" value="submit form &rarr;" />
+        </fieldset>
+    </form>
+
     </body>
 </html>
