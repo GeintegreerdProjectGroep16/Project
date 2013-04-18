@@ -22,6 +22,18 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "Servlet", urlPatterns = {"/Servlet"})
 public class Servlet extends HttpServlet {
+    
+    final static String DATABASE_URL = "jdbc:mysql://localhost/groep16_festivals";
+    final static String USERNAME = "root";
+    final static String PASSWORD = "";
+    
+    String uName;
+    String uPass;
+    String sql;
+                       
+   ResultSet rs = null;
+   Statement stmt = null;
+   Connection conn = null;
 
     /**
      * Processes requests for both HTTP
@@ -43,28 +55,33 @@ public class Servlet extends HttpServlet {
              */
             
                // database link, gebruikersnaam en wachtwoord
-            String DATABASE_URL = "jdbc:mysql://localhost/groep16_festivals";
-            String USERNAME = "root";
-            String PASSWORD = "";
-                       
-            ResultSet rs = null;
-            Statement stmt = null;
+           
             try{
-                Connection conn = DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);
-                String uName = request.getParameter("uName");
-                out.println(uName);
-                String uPass = request.getParameter("Password");
-                out.println(uPass);
-            
-                String sql = "SELECT count(*) FROM geregistreerdegebruikers WHERE gebr_naam LIKE" + uName
-                         + "AND gebr_pass = " + uPass;
+                uName = request.getParameter("uName"); 
+                uPass = request.getParameter("Password");
+                
+                sql = "SELECT count(*) FROM geregistreerdegebruikers WHERE gebr_naam LIKE '" + uName + "' AND gebr_pass LIKE '"+ uPass + "'";
+                Class.forName("com.mysql.jdbc.Driver"); 
+                conn = DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);
+                
                 stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, 
                        ResultSet.CONCUR_READ_ONLY);
                 rs = stmt.executeQuery(sql);
-                out.println(rs.getInt(0));
+                rs.next();
+                if (rs.getInt(1) != 0){
+                    // Code wat er moet komen als er ingelogd is
+                }
+                else{
+                    // foutmelding
+                    out.println("Foute gegevens");
+                }
+                conn.close();
+                
+                
             }
             catch (Exception ex){
-                out.println("De volgende fout is opgetreden:/n" + ex.getMessage());
+                out.println("De volgende fout is opgetreden:\n\n" + ex.getMessage());
+                ex.printStackTrace();
             }
             
             /*out.println("<html>");
