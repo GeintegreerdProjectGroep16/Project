@@ -19,7 +19,7 @@
     <body>
         <h1>Inloggen Gebruikers</h1>
         
-        <form class="col col_6" action="test.jsp">
+        <form class="col col_6" action="Servlet">
     	<fieldset>	
             <div>
             	<label for="Username">Gebruikersnaam</label>
