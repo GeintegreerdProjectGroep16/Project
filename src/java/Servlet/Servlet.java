@@ -23,17 +23,17 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "Servlet", urlPatterns = {"/Servlet"})
 public class Servlet extends HttpServlet {
     
-    final static String DATABASE_URL = "jdbc:mysql://localhost/groep16_festivals";
-    final static String USERNAME = "root";
-    final static String PASSWORD = "";
+    static final String DATABASE_URL = "jdbc:mysql://localhost/groep16_festivals";
+    static final String USERNAME = "root";
+    static final String PASSWORD = "";
     
     String uName;
     String uPass;
     String sql;
                        
-   ResultSet rs = null;
-   Statement stmt = null;
-   Connection conn = null;
+    ResultSet rs = null;
+    Statement stmt = null;
+    Connection conn = null;
 
     /**
      * Processes requests for both HTTP
@@ -69,11 +69,29 @@ public class Servlet extends HttpServlet {
                 rs = stmt.executeQuery(sql);
                 rs.next();
                 if (rs.getInt(1) != 0){
-                    // Code wat er moet komen als er ingelogd is, is nog ff zoeken
+                    out.println("<html>");
+                    out.println("<head>");
+                    out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd Project/52framework_2.0.4/css/css3.css"+" />");
+                    out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd Project/52framework_2.0.4/css/forms.css"+" />");
+                    out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd Project/52framework_2.0.4/css/general.css"+" />");
+                    out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd Project/52framework_2.0.4/css/grid.css"+" />");
+                    out.println("<title>Bewerk gegevens</title>");            
+                    out.println("</head>");
+                    out.println("<body>");
+                    out.println("<h1>Bewerk gegevens</h1>");
+                    out.println("</body>");
+                    out.println("</html>");
                 }
                 else{
                     // foutmelding
-                    out.println("Foute gegevens");
+                    out.println("<html>");
+                    out.println("<head>");
+                    out.println("<title>Foute login</title>");            
+                    out.println("</head>");
+                    out.println("<body>");
+                    out.println("<h1>De opgegeven gebruiker bestaat niet of de ingevoerde gegevens zijn fout</h1>");
+                    out.println("</body>");
+                    out.println("</html>");
                 }
                 conn.close();
                 
