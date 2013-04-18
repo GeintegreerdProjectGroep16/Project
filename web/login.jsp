@@ -23,10 +23,10 @@
     <body>
         <h1>Inloggen Gebruikers</h1>
         
-        <form class="col col_6" action="Servlet">
+        <form class="col col_6" action="Servlet" method ="post">
     	<fieldset>	
             <div>
-            	<label for="Username">Gebruikersnaam</label>
+            	<label name ="lbluName" for="Username">Gebruikersnaam</label>
                 <input type="text" name="uName" required="required" class="box_shadow"  />
             </div>
             <div>

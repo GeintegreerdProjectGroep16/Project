@@ -25,7 +25,7 @@
             <table>
                 <%
                 try{
-
+                    
                     String DATABASE_URL = "jdbc:mysql://localhost/groep16_festivals";
                     String USERNAME = "root";
                     String PASSWORD = "";
@@ -47,6 +47,7 @@
                         out.println("<td>" + rs.getString("fest_naam") + "</td>");
                         out.println("<td>" + rs.getString("fest_locatie") + "</td>");
                         out.println("<td>" + rs.getString("fest_datum") + "</td>");
+                        out.println("<td><input type=\"button\" onclick=\"info.jsp\" name=\"" + rs.getString("fest_id") +"\" value=\"Meer info\"/></td>");
                         out.println("</tr>");
                     }
                     conn.close();
