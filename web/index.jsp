@@ -13,16 +13,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="D:\Dropbox\Geïntegreerd Project\52framework_2.0.4\css\css3.css" />
         <link rel="stylesheet" type="text/css" href="D:\Dropbox\Geïntegreerd Project\52framework_2.0.4\css\forms.css" />
         <link rel="stylesheet" type="text/css" href="D:\Dropbox\Geïntegreerd Project\52framework_2.0.4\css\general.css" />
         <link rel="stylesheet" type="text/css" href="D:\Dropbox\Geïntegreerd Project\52framework_2.0.4\css\grid.css" />
+        <link rel="stylesheet" type="text/css" href="D:\Dropbox\Geïntegreerd Project\52framework_2.0.4\css\reset.css" />
         <title>Home</title>
     </head>
     <body>
         <h1>Muziekfestivals</h1>
         <div id="Data">
-            <table>
                 <%
                 try{
                     
@@ -37,6 +36,7 @@
                     Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, 
                         ResultSet.CONCUR_READ_ONLY);
                     ResultSet rs = stmt.executeQuery(sql);
+                    out.println("<table>");
                     out.println("<tr>");
                     out.println("<th>Naam</th>");
                     out.println("<th>Locatie</th>");
@@ -47,9 +47,21 @@
                         out.println("<td>" + rs.getString("fest_naam") + "</td>");
                         out.println("<td>" + rs.getString("fest_locatie") + "</td>");
                         out.println("<td>" + rs.getString("fest_datum") + "</td>");
-                        out.println("<td><input type=\"button\" onclick=\"info.jsp\" name=\"" + rs.getString("fest_id") +"\" value=\"Meer info\"/></td>");
+                        out.println("<td><a href=\"info.jsp\"><input type=\"button\" name=\"" + rs.getString("fest_id") +"\" value=\"Meer info\"/></a></td>");
                         out.println("</tr>");
                     }
+                    out.println("</table>");
+                    
+                    sql = "SELECT * FROM bands";
+                    rs = stmt.executeQuery(sql);
+                    out.println("<form action=\"servletBands\">");
+                    out.println("<select name=\"bands\" required=\"required\">");
+                    while (rs.next()){
+                      out.println("<option>" + rs.getString("band_naam") + "</option>"); 
+                    }
+                    out.println("</select>");                  
+                    out.println("<input type=\"submit\" value=\"Meer info van deze band\" />");
+                    
                     conn.close();
                 }
                 catch (Exception ex){
@@ -58,7 +70,6 @@
                 }
 
                 %>
-            </table>
         </div>
         <form action="login.jsp">
             <input type="submit" value="Login">

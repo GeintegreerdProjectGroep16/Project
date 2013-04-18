@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlet;
+package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Eusebius
  */
 @WebServlet(name = "Servlet", urlPatterns = {"/Servlet"})
-public class Servlet extends HttpServlet {
+public class servletLogin extends HttpServlet {
     
     static final String DATABASE_URL = "jdbc:mysql://localhost/groep16_festivals";
     static final String USERNAME = "root";
@@ -71,10 +71,10 @@ public class Servlet extends HttpServlet {
                 if (rs.getInt(1) != 0){
                     out.println("<html>");
                     out.println("<head>");
-                    out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd Project/52framework_2.0.4/css/css3.css"+" />");
                     out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd Project/52framework_2.0.4/css/forms.css"+" />");
                     out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd Project/52framework_2.0.4/css/general.css"+" />");
                     out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd Project/52framework_2.0.4/css/grid.css"+" />");
+                    out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd Project/52framework_2.0.4/css/reset.css"+" />");
                     out.println("<title>Bewerk gegevens</title>");            
                     out.println("</head>");
                     out.println("<body>");

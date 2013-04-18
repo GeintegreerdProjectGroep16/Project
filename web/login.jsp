@@ -14,16 +14,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="D:\Dropbox\Geïntegreerd Project\52framework_2.0.4\css\css3.css" />
         <link rel="stylesheet" type="text/css" href="D:\Dropbox\Geïntegreerd Project\52framework_2.0.4\css\forms.css" />
         <link rel="stylesheet" type="text/css" href="D:\Dropbox\Geïntegreerd Project\52framework_2.0.4\css\general.css" />
         <link rel="stylesheet" type="text/css" href="D:\Dropbox\Geïntegreerd Project\52framework_2.0.4\css\grid.css" />
+        <link rel="stylesheet" type="text/css" href="D:\Dropbox\Geïntegreerd Project\52framework_2.0.4\css\reset.css" />
         <title>Login</title>
     </head>
     <body>
         <h1>Inloggen Gebruikers</h1>
         
-        <form class="col col_6" action="Servlet" method ="post">
+        <form class="col col_6" action="servletLogin" method ="post">
     	<fieldset>	
             <div>
             	<label name ="lbluName" for="Username">Gebruikersnaam</label>
