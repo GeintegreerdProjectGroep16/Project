@@ -69,7 +69,7 @@ public class Servlet extends HttpServlet {
                 rs = stmt.executeQuery(sql);
                 rs.next();
                 if (rs.getInt(1) != 0){
-                    // Code wat er moet komen als er ingelogd is
+                    // Code wat er moet komen als er ingelogd is, is nog ff zoeken
                 }
                 else{
                     // foutmelding
