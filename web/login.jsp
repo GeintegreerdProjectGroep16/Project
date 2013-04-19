@@ -23,7 +23,7 @@
     <body>
         <h1>Inloggen Gebruikers</h1>
         
-        <form class="col col_6" action="servletLogin" method ="post">
+        <form class="col col_6" action="servletLogin">
     	<fieldset>	
             <div>
             	<label name ="lbluName" for="Username">Gebruikersnaam</label>

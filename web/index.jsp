@@ -61,7 +61,7 @@
                     }
                     out.println("</select>");                  
                     out.println("<input type=\"submit\" value=\"Meer info van deze band\" />");
-                    
+                    out.println("</form>");
                     conn.close();
                 }
                 catch (Exception ex){

@@ -51,7 +51,18 @@ public class servletBands extends HttpServlet {
             /*
              * TODO output your page here. You may use following sample code.
              */
-            
+             out.println("<html>");
+             out.println("<head>");
+             out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd Project/52framework_2.0.4/css/forms.css"+" />");
+             out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd Project/52framework_2.0.4/css/general.css"+" />");
+             out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd Project/52framework_2.0.4/css/grid.css"+" />");
+             out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd Project/52framework_2.0.4/css/reset.css"+" />");
+             out.println("<title>Band info</title>");            
+             out.println("</head>");
+             out.println("<body>");
+             out.println("<h1>Band informatie</h1>");
+             out.println("</body>");
+             out.println("</html>");
              try{
                bandName = request.getParameter("bands");
                 
@@ -62,9 +73,16 @@ public class servletBands extends HttpServlet {
                 stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, 
                        ResultSet.CONCUR_READ_ONLY);
                 rs = stmt.executeQuery(sql);
-                out.println("");
+                 out.println("<table>");
+                 out.println("<tr>");
+                 out.println("<th>Bandnaam</th>");
+                 out.println("<th>Genre</th>");
+                 out.println("<th>Website</th>");
+                 out.println("</tr>");
                 while (rs.next()){
-                    
+                    out.println("<td>" + rs.getString("band_naam") + "</td>");
+                    out.println("<td>" + rs.getString("band_soortMuziek") + "</td>");
+                    out.println("<td><a href=\"" + rs.getString("band_url") + "\" value=\"Website\">Website</a></td>");
                 }
              }
              catch (Exception ex){

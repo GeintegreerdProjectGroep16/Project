@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Eusebius
  */
-@WebServlet(name = "Servlet", urlPatterns = {"/Servlet"})
+@WebServlet(name = "servletLogin", urlPatterns = {"/servletLogin"})
 public class servletLogin extends HttpServlet {
     
     static final String DATABASE_URL = "jdbc:mysql://localhost/groep16_festivals";
