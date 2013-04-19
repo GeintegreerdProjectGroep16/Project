@@ -47,13 +47,9 @@ public class servletLogin extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            /*
-             * TODO output your page here. You may use following sample code.
-             */
-            
-               // database link, gebruikersnaam en wachtwoord
            
             try{
+                
                 uName = request.getParameter("uName"); 
                 uPass = request.getParameter("Password");
                 

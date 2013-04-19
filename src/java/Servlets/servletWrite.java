@@ -1,0 +1,135 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Servlets;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ *
+ * @author Eusebius
+ */
+@WebServlet(name = "servletWrite", urlPatterns = {"/servletWrite"})
+public class servletWrite extends HttpServlet {
+    
+    static final String DATABASE_URL = "jdbc:mysql://localhost/groep16_festivals";
+    static final String USERNAME = "root";
+    static final String PASSWORD = "";
+    String sql;
+        
+    String table;
+
+    ResultSet rs = null;
+    ResultSetMetaData rsmd = null;
+    Statement stmt = null;
+    Connection conn = null;
+
+    /**
+     * Processes requests for both HTTP
+     * <code>GET</code> and
+     * <code>POST</code> methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        try {
+            
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd%20Project/52framework_2.0.4/css/forms.css"+" />");
+            out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd%20Project/52framework_2.0.4/css/general.css"+" />");
+            out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd%20Project/52framework_2.0.4/css/grid.css"+" />");
+            out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd%20Project/52framework_2.0.4/css/reset.css"+" />");
+            out.println("<title>Schrijven naar databank</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Databank bijwerken</h1>"); 
+            
+            
+            try{
+                 table = request.getParameter("table");
+                 sql = "SELECT * FROM " + table;
+                 Class.forName("com.mysql.jdbc.Driver"); 
+                 conn = DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);
+                
+                 stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                 ResultSet.CONCUR_READ_ONLY);
+                 rs = stmt.executeQuery(sql);
+                 rsmd = rs.getMetaData();
+                 if (request.getParameter("function").equals("update")){
+                     sql = "UPDATE " + table + " SET ";
+                     for (int i=2; i<rsmd.getColumnCount()+1; i++){
+                       sql += rsmd.getColumnName(i) + "=\""+ request.getParameter(rsmd.getColumnName(i)) +"\", "; 
+                     }
+                     sql = sql.substring(0, sql.length()-2);
+                     sql += " WHERE " + rsmd.getColumnName(1) + "=" + Integer.parseInt(request.getParameter("row"));
+                     stmt.executeUpdate(sql);
+                 }
+                 else{
+                     
+                 }
+            }
+            catch (Exception ex){
+                out.println("De volgende fout is opgetreden:\n\n" + ex.getMessage());
+                ex.printStackTrace();
+            }
+        } finally {            
+            out.close();
+        }
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP
+     * <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP
+     * <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+}

@@ -47,19 +47,17 @@ public class servletEdit extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            /*
-             * TODO output your page here. You may use following sample code.
-             */
-                    out.println("<html>");
-                    out.println("<head>");
-                    out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd%20Project/52framework_2.0.4/css/forms.css"+" />");
-                    out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd%20Project/52framework_2.0.4/css/general.css"+" />");
-                    out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd%20Project/52framework_2.0.4/css/grid.css"+" />");
-                    out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd%20Project/52framework_2.0.4/css/reset.css"+" />");
-                    out.println("<title>Bewerk gegevens</title>");            
-                    out.println("</head>");
-                    out.println("<body>");
-                    out.println("<h1>Bewerk gegevens</h1>");        
+            
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd%20Project/52framework_2.0.4/css/forms.css"+" />");
+            out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd%20Project/52framework_2.0.4/css/general.css"+" />");
+            out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd%20Project/52framework_2.0.4/css/grid.css"+" />");
+            out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd%20Project/52framework_2.0.4/css/reset.css"+" />");
+            out.println("<title>Bewerk gegevens</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Bewerk gegevens</h1>");        
                 try{
                     table = request.getParameter("table");
                     sql = "SELECT * FROM " + table;
@@ -70,8 +68,10 @@ public class servletEdit extends HttpServlet {
                     ResultSet.CONCUR_READ_ONLY);
                     rs = stmt.executeQuery(sql);
                     rsmd = rs.getMetaData();
-                    out.println("<table>");
+                    out.println("<form action=\"servletWrite\">");
+                    out.println("<table>");                    
                     out.println("<tr>");
+                    out.println("<th>bewerk</th>");
                     for (int i=1; i<rsmd.getColumnCount()+1; i++ ){
                         out.println("<th>" + rsmd.getColumnName(i) + "</th>");
                     }
@@ -79,7 +79,7 @@ public class servletEdit extends HttpServlet {
                     while(rs.next()){
                         out.println("<tr>");
                         out.println("<td>");
-                        out.println("<input type=\"checkbox\" name=\"" + rs.getInt(1) + "\" value=\"" + rs.getInt(1) + "\">");
+                        out.println("<input type=\"radio\" name=\"row\" value=\"" + rs.getInt(1) + "\">");
                         out.println("</td>");
                         for (int i=1; i<rsmd.getColumnCount()+1; i++){
                             out.println("<td>");
@@ -108,6 +108,11 @@ public class servletEdit extends HttpServlet {
                         
                     }
                     out.println("</table>");
+                    out.println("<input type=\"radio\" name=\"function\" value=\"update\">Update database</br>");
+                    out.println("<input type=\"radio\" name=\"function\" value=\"delete\">Verwijder record</br>");
+                    out.println("<input type=\"submit\" value=\"Voer uit\">");
+                    out.println("<input type=\"text\" name=\"table\" value=\"" + table + "\" hidden>");
+                    out.println("</form>");
                     conn.close();
                 }
                 catch (Exception ex){
