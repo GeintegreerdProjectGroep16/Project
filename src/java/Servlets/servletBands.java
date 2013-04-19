@@ -53,10 +53,10 @@ public class servletBands extends HttpServlet {
              */
              out.println("<html>");
              out.println("<head>");
-             out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd%20Project/52framework_2.0.4/css/forms.css"+" />");
-             out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd%20Project/52framework_2.0.4/css/general.css"+" />");
-             out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd%20Project/52framework_2.0.4/css/grid.css"+" />");
-             out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd%20Project/52framework_2.0.4/css/reset.css"+" />");
+             out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"../css/css3.css\" media=\"screen\">");
+             out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"../css/forms.css\" media=\"screen\">");
+             out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"../css/general.css\" media=\"screen\">");
+             out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"../css/grid.css\" media=\"screen\">");
              out.println("<title>Band info</title>");            
              out.println("</head>");
              out.println("<body>");
@@ -87,7 +87,7 @@ public class servletBands extends HttpServlet {
                 conn.close();
              }
              catch (Exception ex){
-                out.println("De volgende fout is opgetreden:\n\n" + ex.getMessage());
+                out.println("De volgende fout is opgetreden: " + ex.getMessage());
                 ex.printStackTrace();
             }
         } finally {            

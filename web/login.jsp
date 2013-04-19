@@ -14,10 +14,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="D:\Dropbox\Geïntegreerd%20Project\52framework_2.0.4\css\forms.css" />
-        <link rel="stylesheet" type="text/css" href="D:\Dropbox\Geïntegreerd%20Project\52framework_2.0.4\css\general.css" />
-        <link rel="stylesheet" type="text/css" href="D:\Dropbox\Geïntegreerd%20Project\52framework_2.0.4\css\grid.css" />
-        <link rel="stylesheet" type="text/css" href="D:\Dropbox\Geïntegreerd%20Project\52framework_2.0.4\css\reset.css" />
+        <link rel="stylesheet" type="text/css" href="./css/css3.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="./css/forms.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="./css/general.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="./css/grid.css" media="screen">
         <title>Login</title>
     </head>
     <body>

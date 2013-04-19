@@ -50,10 +50,10 @@ public class servletWrite extends HttpServlet {
             
             out.println("<html>");
             out.println("<head>");
-            out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd%20Project/52framework_2.0.4/css/forms.css"+" />");
-            out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd%20Project/52framework_2.0.4/css/general.css"+" />");
-            out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd%20Project/52framework_2.0.4/css/grid.css"+" />");
-            out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd%20Project/52framework_2.0.4/css/reset.css"+" />");
+            out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"../css/css3.css\" media=\"screen\">");
+            out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"../css/forms.css\" media=\"screen\">");
+            out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"../css/general.css\" media=\"screen\">");
+            out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"../css/grid.css\" media=\"screen\">");
             out.println("<title>Schrijven naar databank</title>");            
             out.println("</head>");
             out.println("<body>");
@@ -77,14 +77,32 @@ public class servletWrite extends HttpServlet {
                      }
                      sql = sql.substring(0, sql.length()-2);
                      sql += " WHERE " + rsmd.getColumnName(1) + "=" + Integer.parseInt(request.getParameter("row"));
-                     stmt.executeUpdate(sql);
-                 }
-                 else{
+                     try{
+                        stmt.executeUpdate(sql);
+                        out.println("De database is aangepast");
+                     }
+                     catch (Exception ex){
+                        out.println("De volgende fout is opgetreden: " + ex.getMessage());
+                        ex.printStackTrace();
+                     }
                      
                  }
+                 else{
+                     sql = "DELETE FROM " + table + " WHERE " + rsmd.getColumnName(1) + "=" + Integer.parseInt(request.getParameter("row"));
+                     try{
+                        stmt.executeUpdate(sql);
+                        out.println("Het record is verwijderd");
+                     }
+                     catch (Exception ex){
+                        out.println("De volgende fout is opgetreden: " + ex.getMessage());
+                        ex.printStackTrace();
+                     }
+                     
+                 }
+                 conn.close();
             }
             catch (Exception ex){
-                out.println("De volgende fout is opgetreden:\n\n" + ex.getMessage());
+                out.println("De volgende fout is opgetreden: " + ex.getMessage());
                 ex.printStackTrace();
             }
         } finally {            
