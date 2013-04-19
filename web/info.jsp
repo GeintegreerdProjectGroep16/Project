@@ -12,10 +12,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="D:\Dropbox\Geïntegreerd Project\52framework_2.0.4\css\forms.css" />
-        <link rel="stylesheet" type="text/css" href="D:\Dropbox\Geïntegreerd Project\52framework_2.0.4\css\general.css" />
-        <link rel="stylesheet" type="text/css" href="D:\Dropbox\Geïntegreerd Project\52framework_2.0.4\css\grid.css" />
-        <link rel="stylesheet" type="text/css" href="D:\Dropbox\Geïntegreerd Project\52framework_2.0.4\css\reset.css" />
+        <link rel="stylesheet" type="text/css" href="D:\Dropbox\Geïntegreerd%20Project\52framework_2.0.4\css\forms.css" />
+        <link rel="stylesheet" type="text/css" href="D:\Dropbox\Geïntegreerd%20Project\52framework_2.0.4\css\general.css" />
+        <link rel="stylesheet" type="text/css" href="D:\Dropbox\Geïntegreerd%20Project\52framework_2.0.4\css\grid.css" />
+        <link rel="stylesheet" type="text/css" href="D:\Dropbox\Geïntegreerd%20Project\52framework_2.0.4\css\reset.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Info</title>
     </head>

@@ -6,10 +6,7 @@ package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -71,14 +68,19 @@ public class servletLogin extends HttpServlet {
                 if (rs.getInt(1) != 0){
                     out.println("<html>");
                     out.println("<head>");
-                    out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd Project/52framework_2.0.4/css/forms.css"+" />");
-                    out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd Project/52framework_2.0.4/css/general.css"+" />");
-                    out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd Project/52framework_2.0.4/css/grid.css"+" />");
-                    out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd Project/52framework_2.0.4/css/reset.css"+" />");
+                    out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd%20Project/52framework_2.0.4/css/forms.css"+" />");
+                    out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd%20Project/52framework_2.0.4/css/general.css"+" />");
+                    out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd%20Project/52framework_2.0.4/css/grid.css"+" />");
+                    out.println("<link rel="+"stylesheet"+" type="+"text/css"+" href="+"D:/Dropbox/Geïntegreerd%20Project/52framework_2.0.4/css/reset.css"+" />");
                     out.println("<title>Bewerk gegevens</title>");            
                     out.println("</head>");
                     out.println("<body>");
                     out.println("<h1>Bewerk gegevens</h1>");
+                    out.println("<form action=\"servletEdit\">");
+                    out.println("<label>Geef de naam in van de tabel die je wil bewerken<label></br>");
+                    out.println("<input type=\"text\" name=\"table\"></br>");
+                    out.println("<input type=\"submit\" value=\"Bewerk gegevens\">");
+                    out.println("</form>");
                     out.println("</body>");
                     out.println("</html>");
                 }
@@ -93,7 +95,7 @@ public class servletLogin extends HttpServlet {
                     out.println("</body>");
                     out.println("</html>");
                 }
-                conn.close();
+                conn.close();                
                 
                 
             }
