@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "servletWrite", urlPatterns = {"/servletWrite"})
 public class servletWrite extends HttpServlet {
-    
+    // database link, gebruikersnaam en wachwoord
     static final String DATABASE_URL = "jdbc:mysql://localhost/groep16_festivals";
     static final String USERNAME = "root";
     static final String PASSWORD = "";
@@ -61,6 +61,7 @@ public class servletWrite extends HttpServlet {
             
             
             try{
+                // opvragen van de tabelnaam
                  table = request.getParameter("table");
                  sql = "SELECT * FROM " + table;
                  Class.forName("com.mysql.jdbc.Driver"); 
@@ -70,6 +71,7 @@ public class servletWrite extends HttpServlet {
                  ResultSet.CONCUR_READ_ONLY);
                  rs = stmt.executeQuery(sql);
                  rsmd = rs.getMetaData();
+                 // als de radiobutton update is aangeduid wordt dit uitgevoerd
                  if (request.getParameter("function").equals("update")){
                      sql = "UPDATE " + table + " SET ";
                      for (int i=2; i<rsmd.getColumnCount()+1; i++){
@@ -87,6 +89,7 @@ public class servletWrite extends HttpServlet {
                      }
                      
                  }
+                 // anders wordt dit uitgevoerd
                  else{
                      sql = "DELETE FROM " + table + " WHERE " + rsmd.getColumnName(1) + "=" + Integer.parseInt(request.getParameter("row"));
                      try{

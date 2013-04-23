@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "servletLogin", urlPatterns = {"/servletLogin"})
 public class servletLogin extends HttpServlet {
-    
+    // database link, gebruikersnaam en wachtwoord
     static final String DATABASE_URL = "jdbc:mysql://localhost/groep16_festivals";
     static final String USERNAME = "root";
     static final String PASSWORD = "";
@@ -49,7 +49,7 @@ public class servletLogin extends HttpServlet {
         try {
            
             try{
-                
+                // checken of de opgegeven parameters juist zijn
                 uName = request.getParameter("uName"); 
                 uPass = request.getParameter("Password");
                 
@@ -99,15 +99,6 @@ public class servletLogin extends HttpServlet {
                 out.println("De volgende fout is opgetreden: " + ex.getMessage());
                 ex.printStackTrace();
             }
-            
-            /*out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Servlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Servlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");*/
         } finally {            
             out.close();
         }

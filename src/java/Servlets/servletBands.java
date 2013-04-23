@@ -22,7 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "servletBands", urlPatterns = {"/servletBands"})
 public class servletBands extends HttpServlet {
-     static final String DATABASE_URL = "jdbc:mysql://localhost/groep16_festivals";
+    // database link, gebruikersnaam en wachtwoord
+    static final String DATABASE_URL = "jdbc:mysql://localhost/groep16_festivals";
     static final String USERNAME = "root";
     static final String PASSWORD = "";
     
@@ -64,6 +65,7 @@ public class servletBands extends HttpServlet {
              out.println("</body>");
              out.println("</html>");
              try{
+               // de parameter bandName opvragen en de pagina meer info over deze band vullen
                bandName = request.getParameter("bands");
                 
                 sql = "SELECT * FROM bands WHERE band_naam LIKE'" + bandName + "'";

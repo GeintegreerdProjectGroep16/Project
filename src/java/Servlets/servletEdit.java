@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "servletEdit", urlPatterns = {"/servletEdit"})
 public class servletEdit extends HttpServlet {
-    
+        // database link, gebruikersnaam en wachtwoord
         static final String DATABASE_URL = "jdbc:mysql://localhost/groep16_festivals";
         static final String USERNAME = "root";
         static final String PASSWORD = "";
@@ -59,6 +59,7 @@ public class servletEdit extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Bewerk gegevens</h1>");        
                 try{
+                    // de naam van de tabel die je wil bewerken ingeven en hiervan de gegevens ophalen
                     table = request.getParameter("table");
                     sql = "SELECT * FROM " + table;
                     Class.forName("com.mysql.jdbc.Driver"); 

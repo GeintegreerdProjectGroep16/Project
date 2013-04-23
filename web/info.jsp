@@ -29,7 +29,7 @@
                     String DATABASE_URL = "jdbc:mysql://localhost/groep16_festivals";
                     String USERNAME = "root";
                     String PASSWORD = "";
-
+                    // de pagina achter de knop meer info vullen
                     String sql = "select * from festivals f, tickettypesperfestival tpf, tickettypes t where f.fest_id = tpf.fest_id and t.typ_id = tpf.typ_id order by f.fest_id";
                     Class.forName("com.mysql.jdbc.Driver");
                     Connection conn = DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);

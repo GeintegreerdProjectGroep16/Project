@@ -24,7 +24,8 @@
         <div id="Data">
                 <%
                 try{
-                    
+                    // de tabel op de startpagina vullen
+                    // pad naar database, gebruikersnaam en wachtwoord
                     String DATABASE_URL = "jdbc:mysql://localhost/groep16_festivals";
                     String USERNAME = "root";
                     String PASSWORD = "";
@@ -51,7 +52,7 @@
                         out.println("</tr>");
                     }
                     out.println("</table>");
-                    
+                    // de combobox met de bandnamen vulen
                     sql = "SELECT * FROM bands";
                     rs = stmt.executeQuery(sql);
                     out.println("<form action=\"servletBands\">");
