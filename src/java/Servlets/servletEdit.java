@@ -82,10 +82,11 @@ public class servletEdit extends HttpServlet {
                         out.println("<td>");
                         out.println("<input type=\"radio\" name=\"row\" value=\"" + rs.getInt(1) + "\">");
                         out.println("</td>");
+                        int number = rs.getInt(1);
                         for (int i=1; i<rsmd.getColumnCount()+1; i++){
                             out.println("<td>");
                             if (rsmd.getColumnTypeName(i).equals("VARCHAR")){
-                                out.println("<input type=\"text\" name=\"" + rsmd.getColumnName(i) + "\" value=\"" + rs.getString(rsmd.getColumnName(i)) + "\">");
+                                out.println("<input type=\"text\" name=\"" + rsmd.getColumnName(i) + "_" + number + "\" value=\"" + rs.getString(rsmd.getColumnName(i)) + "\">");
                             }
                             else if (rsmd.getColumnTypeName(i).equals("INT")){
                                 if (rsmd.getColumnName(i).substring(rsmd.getColumnName(i).length()-2).equals("id")){

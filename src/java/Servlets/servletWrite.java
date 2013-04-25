@@ -71,11 +71,12 @@ public class servletWrite extends HttpServlet {
                  ResultSet.CONCUR_READ_ONLY);
                  rs = stmt.executeQuery(sql);
                  rsmd = rs.getMetaData();
+                 int number = Integer.parseInt(request.getParameter("row"));
                  // als de radiobutton update is aangeduid wordt dit uitgevoerd
                  if (request.getParameter("function").equals("update")){
                      sql = "UPDATE " + table + " SET ";
                      for (int i=2; i<rsmd.getColumnCount()+1; i++){
-                       sql += rsmd.getColumnName(i) + "=\""+ request.getParameter(rsmd.getColumnName(i)) +"\", "; 
+                       sql += rsmd.getColumnName(i) + "=\""+ request.getParameter(rsmd.getColumnName(i) + "_" + number) +"\", "; 
                      }
                      sql = sql.substring(0, sql.length()-2);
                      sql += " WHERE " + rsmd.getColumnName(1) + "=" + Integer.parseInt(request.getParameter("row"));
